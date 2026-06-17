@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrol Paws — Trusted Dog Walking & Pet Care, Norwich</title>
+  <meta name="description" content="Professional dog walking, adventure days, puppy visits and pet care across Norwich. Former police officer, fully insured, DBS checked, pet first aid trained.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <style>
+    /* ============================================================
+       VARIABLES
+    ============================================================ */
+    :root {
+      --forest:      #2F4C31;
+      --forest-mid:  #4A6E4A;
+      --sage:        #78987A;
+      --sage-pale:   #C4D9BE;
+      --sage-mist:   #EBF2E7;
+      --cream:       #F5F0E6;
+      --warm-sand:   #E4D8C2;
+      --text:        #1C2E1E;
+      --text-soft:   #5A6A5C;
+      --white:       #FFFCF7;
+
+      --ff-display: 'DM Serif Display', serif;
+      --ff-body:    'Nunito', sans-serif;
+      --ff-script:  'Caveat', cursive;
+
+      --nav-h: 70px;
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { font-family: var(--ff-body); color: var(--text); background: var(--cream); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: var(--ff-body); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      padding: 0 6%;
+      transition: background 0.45s ease, box-shadow 0.45s ease;
+    }
+    .nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 1px 0 rgba(46,74,48,0.1);
+    }
+    .nav-logo {
+      font-family: var(--ff-display); font-size: 1.25rem;
+      color: var(--forest); letter-spacing: 0.04em; flex: 1;
+      display: flex; align-items: center; gap: 0.4em;
+    }
+    .nav-logo .paw { color: var(--sage); }
+    .nav-links {
+      list-style: none; display: flex; align-items: center; gap: 2.25rem;
+    }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--forest); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta {
+      padding: 0.6rem 1.4rem !important;
+      background: var(--forest); color: var(--white) !important;
+      border-radius: 100px; transition: background 0.2s !important;
+      font-size: 0.78rem !important;
+    }
+    .nav-cta:hover { background: var(--forest-mid) !important; color: var(--white) !important; }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--forest); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding-left: 8%;
+      padding-right: 5%;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -20%; right: -10%; width: 65%; height: 140%;
+      background: radial-gradient(ellipse at 60% 50%, var(--sage-mist) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; padding-right: 4%; }
+    .hero-eyebrow {
+      font-family: var(--ff-script); font-size: 1.35rem;
+      color: var(--sage); display: block; margin-bottom: 1.1rem;
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+      line-height: 1.06; color: var(--forest);
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em { font-style: italic; color: var(--forest-mid); }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+      line-height: 1.85; color: var(--text-soft);
+      max-width: 460px; margin-bottom: 2rem;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.38rem 0.9rem;
+      background: var(--forest); color: var(--sage-pale);
+      border-radius: 100px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 0.9rem 1.9rem;
+      background: var(--forest); color: var(--white);
+      border-radius: 100px; border: 2px solid var(--forest);
+      font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.04em; cursor: pointer;
+      transition: all 0.25s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--forest-mid); border-color: var(--forest-mid); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 0.9rem 1.9rem;
+      background: transparent; color: var(--forest);
+      border-radius: 100px; border: 2px solid var(--forest);
+      font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.04em; cursor: pointer;
+      transition: all 0.25s; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--forest); color: var(--white); transform: translateY(-2px); }
+
+    .hero-image {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2.5rem 0;
+    }
+    .hero-image img {
+      width: min(500px, 95%);
+      border-radius: 50%;
+      box-shadow: 0 40px 100px rgba(46,74,48,0.18), 0 8px 30px rgba(46,74,48,0.1);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.5rem; z-index: 5;
+    }
+    .hero-scroll span {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sage);
+    }
+    .scroll-arrow { color: var(--sage); animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 55% { transform: translateY(7px); } }
+
+    /* ============================================================
+       TRUST STRIP
+    ============================================================ */
+    .trust-strip {
+      background: var(--forest);
+      padding: 1.4rem 6%;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 0 2.5rem;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      color: var(--sage-pale);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.45rem 0;
+    }
+    .trust-icon {
+      width: 30px; height: 30px;
+      background: rgba(255,255,255,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+    ============================================================ */
+    .section { padding: 6rem 8%; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-label::after {
+      content: ''; width: 36px; height: 1px; background: currentColor;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.1rem, 3.8vw, 3.4rem);
+      line-height: 1.1; color: var(--forest); margin-bottom: 1.25rem;
+    }
+    .section-title em { font-style: italic; color: var(--forest-mid); }
+    .section-body {
+      font-size: 1rem; line-height: 1.9; color: var(--text-soft); max-width: 600px;
+    }
+
+    /* ============================================================
+       ABOUT INTRO
+    ============================================================ */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5.5rem; align-items: center;
+    }
+    .about-image-wrap {
+      background: var(--sage-mist);
+      border-radius: 20px; padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(46,74,48,0.1);
+    }
+    .about-image-wrap img { width: 100%; border-radius: 12px; }
+    .about-quote {
+      font-family: var(--ff-script); font-size: 1.55rem;
+      color: var(--sage); line-height: 1.4;
+      padding-left: 1.25rem;
+      border-left: 3px solid var(--sage-pale);
+      margin: 1.5rem 0;
+    }
+    .about-text { font-size: 0.97rem; line-height: 1.9; color: var(--text-soft); }
+    .about-text + .about-text { margin-top: 1rem; }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services { background: var(--cream); }
+    .services-head { margin-bottom: 3.5rem; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: 18px;
+      padding: 2.25rem 1.85rem;
+      border: 1px solid var(--warm-sand);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--sage);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 55px rgba(46,74,48,0.1); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 50px; height: 50px; background: var(--sage-mist);
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .service-name {
+      font-family: var(--ff-display); font-size: 1.35rem;
+      color: var(--forest); margin-bottom: 0.45rem;
+    }
+    .service-price {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 0.7rem;
+    }
+    .service-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-soft); }
+
+    /* ============================================================
+       ADVENTURE CLUB
+    ============================================================ */
+    .adventure { background: var(--forest); }
+    .adventure-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .adventure .section-label { color: var(--sage-pale); }
+    .adventure .section-label::after { background: var(--sage-pale); }
+    .adventure .section-title { color: var(--white); }
+    .adventure .section-title em { color: var(--sage-pale); }
+    .adventure-body { font-size: 0.97rem; line-height: 1.9; color: rgba(255,255,255,0.72); margin-bottom: 1.5rem; }
+    .adventure-price-badge {
+      display: inline-block; background: var(--sage-pale); color: var(--forest);
+      padding: 0.55rem 1.5rem; border-radius: 100px;
+      font-size: 1rem; font-weight: 700; margin-bottom: 2rem;
+    }
+    .adventure-list {
+      list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+    }
+    .adventure-list li {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.88rem; color: rgba(255,255,255,0.82);
+    }
+    .adventure-list li::before { content: '🐾'; font-size: 0.75rem; }
+    .adventure-cta {
+      margin-top: 2.5rem; display: inline-block;
+      padding: 0.9rem 1.9rem; border-radius: 100px;
+      border: 2px solid var(--sage-pale); color: var(--sage-pale);
+      font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.04em; transition: all 0.25s;
+    }
+    .adventure-cta:hover { background: var(--sage-pale); color: var(--forest); }
+
+    /* Timeline card */
+    .timeline-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 2.5rem;
+    }
+    .timeline-heading {
+      font-family: var(--ff-script); font-size: 1.35rem;
+      color: var(--sage-pale); margin-bottom: 1.75rem;
+    }
+    .tl-item {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+    }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-time {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--sage-pale); min-width: 58px; padding-top: 3px;
+    }
+    .tl-dot {
+      width: 10px; height: 10px; background: var(--sage);
+      border-radius: 50%; flex-shrink: 0; margin-top: 6px;
+    }
+    .tl-text { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.78); }
+
+    /* ============================================================
+       WHY CHOOSE
+    ============================================================ */
+    .why { background: var(--sage-mist); }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5.5rem; align-items: start;
+    }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+    .why-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .why-check {
+      width: 30px; height: 30px; flex-shrink: 0;
+      background: var(--forest); color: var(--white);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; margin-top: 2px;
+    }
+    .why-h { font-family: var(--ff-display); font-size: 1.1rem; color: var(--forest); margin-bottom: 0.3rem; }
+    .why-p { font-size: 0.88rem; line-height: 1.75; color: var(--text-soft); }
+
+    .why-panel {
+      background: var(--forest); border-radius: 20px;
+      padding: 3rem 2.5rem; position: sticky; top: calc(var(--nav-h) + 2rem);
+    }
+    .why-panel-title {
+      font-family: var(--ff-script); font-size: 1.4rem;
+      color: var(--sage-pale); margin-bottom: 1.75rem;
+    }
+    .promise-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .promise-list li {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.8);
+    }
+    .promise-list li span { font-size: 0.9rem; margin-top: 2px; }
+
+    /* ============================================================
+       PRICING
+    ============================================================ */
+    .pricing { background: var(--cream); }
+    .pricing-head { margin-bottom: 3.5rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .price-card {
+      background: var(--white); border: 1px solid var(--warm-sand);
+      border-radius: 18px; padding: 2rem 1.75rem; text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card:not(.featured):hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(46,74,48,0.1); }
+    .price-card.featured {
+      background: var(--forest); border-color: var(--forest);
+      transform: scale(1.04);
+      box-shadow: 0 25px 65px rgba(46,74,48,0.25);
+    }
+    .price-emoji { font-size: 1.8rem; margin-bottom: 0.85rem; display: block; }
+    .price-name {
+      font-family: var(--ff-display); font-size: 1.25rem;
+      color: var(--forest); margin-bottom: 0.6rem;
+    }
+    .featured .price-name { color: var(--sage-pale); }
+    .price-val {
+      font-family: var(--ff-display); font-size: 2.7rem;
+      line-height: 1; color: var(--forest); margin-bottom: 0.2rem;
+    }
+    .featured .price-val { color: var(--white); }
+    .price-note { font-size: 0.78rem; color: var(--text-soft); margin-bottom: 1.25rem; }
+    .featured .price-note { color: rgba(255,255,255,0.55); }
+    .price-feats { list-style: none; font-size: 0.84rem; line-height: 2.1; color: var(--text-soft); text-align: left; }
+    .featured .price-feats { color: rgba(255,255,255,0.78); }
+    .price-feats li::before { content: '✓  '; color: var(--sage); font-weight: 700; }
+    .featured .price-feats li::before { color: var(--sage-pale); }
+    .pricing-note {
+      text-align: center; margin-top: 2rem;
+      font-size: 0.85rem; color: var(--text-soft);
+    }
+
+    /* ============================================================
+       EMERGENCY SERVICES
+    ============================================================ */
+    .emergency {
+      background: linear-gradient(135deg, #1E3820 0%, var(--forest) 100%);
+      color: var(--white);
+    }
+    .emergency-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .emergency .section-label { color: var(--sage-pale); }
+    .emergency .section-label::after { background: var(--sage-pale); }
+    .emergency .section-title { color: var(--white); }
+    .emergency .section-title em { color: var(--sage-pale); }
+    .disc-badge {
+      display: inline-block;
+      background: var(--sage-pale); color: var(--forest);
+      font-family: var(--ff-display);
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      line-height: 1; padding: 1rem 2rem;
+      border-radius: 16px; margin: 1.25rem 0;
+    }
+    .emergency-body { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.72); margin-bottom: 2rem; }
+    .services-row { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .emer-badge {
+      display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
+    }
+    .emer-icon {
+      width: 58px; height: 58px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .emer-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .emergency-image { border-radius: 20px; overflow: hidden; }
+    .emergency-image img { width: 100%; height: auto; }
+
+    /* ============================================================
+       AREAS
+    ============================================================ */
+    .areas { background: var(--white); }
+    .areas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5.5rem; align-items: center; }
+    .area-tags { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
+    .area-tag {
+      padding: 0.5rem 1.2rem;
+      background: var(--sage-mist); color: var(--forest);
+      border-radius: 100px; border: 1px solid var(--sage-pale);
+      font-size: 0.85rem; font-weight: 600;
+    }
+    .areas-note { margin-top: 1.5rem; font-size: 0.9rem; line-height: 1.75; color: var(--text-soft); }
+    .areas-map-placeholder {
+      background: var(--sage-mist); border-radius: 20px;
+      padding: 3.5rem 2.5rem; border: 1px solid var(--sage-pale);
+    }
+    .areas-map-placeholder p {
+      font-family: var(--ff-script); font-size: 1.1rem;
+      color: var(--sage); text-align: center; margin-bottom: 1.5rem;
+    }
+    .map-circles {
+      display: flex; flex-direction: column; gap: 0.6rem; align-items: center;
+    }
+    .map-row { display: flex; gap: 0.6rem; }
+    .map-dot {
+      width: 10px; height: 10px; background: var(--sage);
+      border-radius: 50%; opacity: 0.6;
+    }
+    .map-dot.active { background: var(--forest); opacity: 1; width: 13px; height: 13px; }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq { background: var(--cream); }
+    .faq-inner { max-width: 780px; margin: 3rem auto 0; }
+    .faq-item { border-bottom: 1px solid var(--warm-sand); }
+    .faq-q {
+      width: 100%; text-align: left; padding: 1.5rem 0;
+      background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--ff-display); font-size: 1.05rem; color: var(--forest);
+      gap: 1.5rem;
+    }
+    .faq-q:hover { color: var(--forest-mid); }
+    .faq-icon {
+      width: 28px; height: 28px; border: 2px solid var(--sage);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--sage); flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      background: var(--forest); border-color: var(--forest);
+      color: var(--white); transform: rotate(45deg);
+    }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-a p { padding: 0 0 1.5rem; font-size: 0.93rem; line-height: 1.85; color: var(--text-soft); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact { background: var(--forest); color: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+    .contact .section-label { color: var(--sage-pale); }
+    .contact .section-label::after { background: var(--sage-pale); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-title em { color: var(--sage-pale); }
+    .contact-body { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+    .contact-details { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail { display: flex; align-items: center; gap: 0.8rem; font-size: 0.92rem; color: rgba(255,255,255,0.78); }
+    .cd-icon {
+      width: 36px; height: 36px; background: rgba(255,255,255,0.1);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .form-group label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.88rem 1.15rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px; color: var(--white);
+      font-family: var(--ff-body); font-size: 0.9rem;
+      outline: none; transition: border 0.2s;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--sage-pale); }
+    .form-group select option { background: var(--forest); color: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      padding: 1rem 2.5rem; background: var(--sage-pale); color: var(--forest);
+      border: none; border-radius: 100px; cursor: pointer;
+      font-family: var(--ff-body); font-size: 0.92rem; font-weight: 700;
+      letter-spacing: 0.04em; align-self: flex-start;
+      transition: all 0.25s;
+    }
+    .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #172A19; padding: 3rem 8%;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+    }
+    .foot-logo { font-family: var(--ff-display); font-size: 1.2rem; color: var(--white); }
+    .foot-tag { font-family: var(--ff-script); font-size: 0.95rem; color: var(--sage); margin-top: 0.2rem; }
+    .foot-links { list-style: none; display: flex; flex-wrap: wrap; gap: 1.75rem; }
+    .foot-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; transition: color 0.2s; }
+    .foot-links a:hover { color: var(--white); }
+    .foot-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+    /* ============================================================
+       SECTION DIVIDER — BOTANICAL LEAF
+    ============================================================ */
+    .leaf-divider {
+      text-align: center; font-size: 1.1rem;
+      color: var(--sage-pale); letter-spacing: 0.5em;
+      padding: 0.25rem 0;
+    }
+
+    /* ============================================================
+       ANIMATION STARTERS (hidden until triggered)
+    ============================================================ */
+    .fade-up  { opacity: 0; transform: translateY(45px); }
+    .fade-lft { opacity: 0; transform: translateX(-45px); }
+    .fade-rgt { opacity: 0; transform: translateX(45px); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 5rem 7% 3rem; text-align: center;
+      }
+      .hero-image { order: -1; }
+      .hero-badges { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .section-label { justify-content: center; }
+      .about-grid, .adventure-grid, .why-grid,
+      .emergency-grid, .areas-grid, .contact-grid {
+        grid-template-columns: 1fr; gap: 3rem;
+      }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .price-card.featured { transform: none; }
+      .why-panel { position: static; }
+      .nav-links { display: none; flex-direction: column; align-items: flex-start; gap: 0; }
+      .nav-links.open {
+        display: flex; position: fixed;
+        top: var(--nav-h); left: 0; right: 0;
+        background: var(--white); padding: 1.5rem 7%;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      .nav-links.open li { width: 100%; }
+      .nav-links.open a {
+        display: block; padding: 0.85rem 0;
+        border-bottom: 1px solid var(--warm-sand);
+        font-size: 0.9rem;
+      }
+      .nav-links.open .nav-cta {
+        margin-top: 0.75rem; display: inline-block;
+        background: var(--forest) !important; color: var(--white) !important;
+        padding: 0.7rem 1.4rem !important; border-radius: 100px;
+        border: none !important;
+      }
+      .nav-toggle { display: flex; }
+      .adventure-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 4rem 6%; }
+      .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust-strip { gap: 0.75rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">PATROL <span class="paw">🐾</span> PAWS</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#adventure">Adventure Club</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Prices</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Meet & Greet</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-content fade-up">
+    <span class="hero-eyebrow">Norwich &amp; Surrounding Areas</span>
+    <h1 class="hero-title">
+      Trusted Care.<br>
+      <em>Tail-Wagging</em><br>
+      Adventures.<br>
+      Every Time.
+    </h1>
+    <p class="hero-sub">
+      Professional dog walking, adventure days, puppy visits and pet care across Norwich and surrounding areas.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">👮 Former Police Officer</span>
+      <span class="badge">🚑 Pet First Aid</span>
+      <span class="badge">✓ Fully Insured</span>
+      <span class="badge">🔒 DBS Checked</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Free Meet &amp; Greet</a>
+      <a href="#services" class="btn-outline">View Our Services</a>
+    </div>
+  </div>
+  <div class="hero-image fade-rgt">
+    <img src="images/logo.jpg" alt="Renata & Bea — Patrol Paws" />
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <div class="scroll-arrow">↓</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST STRIP
+============================================================ -->
+<div class="trust-strip">
+  <div class="trust-item"><div class="trust-icon">🚑</div>Pet First Aid Trained</div>
+  <div class="trust-item"><div class="trust-icon">📋</div>Fully Insured</div>
+  <div class="trust-item"><div class="trust-icon">🔒</div>DBS Checked</div>
+  <div class="trust-item"><div class="trust-icon">👮</div>Former Police Officer</div>
+  <div class="trust-item"><div class="trust-icon">🐾</div>Loving Care &amp; Attention</div>
+  <div class="trust-item"><div class="trust-icon">⭐</div>10% Emergency Services Discount</div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap fade-lft">
+      <img src="images/leaflet.jpg" alt="Patrol Paws — Dog Walking & Pet Care with a Personal Touch" />
+    </div>
+    <div class="fade-rgt">
+      <div class="section-label">About Renata</div>
+      <h2 class="section-title">Dog Walking <em>With a Personal Touch</em></h2>
+      <blockquote class="about-quote">"Hi, I'm Renata, founder of Patrol Paws."</blockquote>
+      <p class="about-text">
+        After years of working with dogs and serving as a police officer, I created Patrol Paws to provide the kind of care I'd want for my own dog, Bea.
+      </p>
+      <p class="about-text" style="margin-top:1rem;">
+        My background in law enforcement gave me discipline, reliability, and a deep understanding of trust — values I carry into every single walk. Combined with my university studies in animal behaviour and hands-on experience with all breeds, sizes, and temperaments, I'm uniquely placed to give your dog the care they truly deserve.
+      </p>
+      <p class="about-text" style="margin-top:1rem;">
+        I've also spent time helping stray dogs during travels abroad, which cemented something I already knew: every dog deserves exercise, enrichment, patience, and genuine love — not just a quick lap around the block.
+      </p>
+      <a href="#contact" class="btn-primary" style="margin-top:2rem;">Book a Chat with Renata</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="section services" id="services">
+  <div class="services-head">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our <em>Services</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🚶</div>
+      <h3 class="service-name">Group Walks</h3>
+      <div class="service-price">From £15</div>
+      <p class="service-desc">Carefully matched small groups for socialisation, exercise, and fun. Every dog is assessed for compatibility before joining.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🐕</div>
+      <h3 class="service-name">Solo Walks</h3>
+      <div class="service-price">From £15</div>
+      <p class="service-desc">One-to-one attention for dogs who prefer their own space — perfect for reactive dogs, seniors, or those in training.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🏕️</div>
+      <h3 class="service-name">Adventure Club</h3>
+      <div class="service-price">£25 per dog</div>
+      <p class="service-desc">Half-day adventures to beaches, woodlands, and secure fields. A truly enriching experience far beyond the ordinary walk.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🐶</div>
+      <h3 class="service-name">Puppy Visits</h3>
+      <div class="service-price">From £15</div>
+      <p class="service-desc">Drop-in visits for puppies who need company, toilet breaks, play, and enrichment while you're away or at work.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🏠</div>
+      <h3 class="service-name">Pet Visits</h3>
+      <div class="service-price">From £15</div>
+      <p class="service-desc">Home visits for dogs, cats, and small animals. Feeding, companionship, medication administration, and regular photo updates.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🛏️</div>
+      <h3 class="service-name">House Sitting & Holiday Care</h3>
+      <div class="service-price">Price on Application</div>
+      <p class="service-desc">Live-in care while you're away. Your pet stays in their own home, routine maintained, with daily exercise and adventure options.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ADVENTURE CLUB
+============================================================ -->
+<section class="section adventure" id="adventure">
+  <div class="adventure-grid">
+    <div class="fade-lft">
+      <div class="section-label">Premium Experience</div>
+      <h2 class="section-title">The Adventure <em>Club</em></h2>
+      <p class="adventure-body">
+        Half-day adventures for dogs who deserve more than a walk around the block. I collect from your door, drive to somewhere genuinely special — beach, forest trail, or secure field — and bring your dog home happy, tired, and enriched.
+      </p>
+      <div class="adventure-price-badge">£25 per dog · Small Groups Only</div>
+      <ul class="adventure-list">
+        <li>Collection from your home</li>
+        <li>Comfortable, safe transport</li>
+        <li>Beach adventures</li>
+        <li>Woodland exploration</li>
+        <li>Secure field play sessions</li>
+        <li>Sniff walks &amp; enrichment</li>
+        <li>Recall practice (where safe)</li>
+        <li>Photo diary sent to you</li>
+      </ul>
+      <a href="#contact" class="adventure-cta">Book an Adventure Day</a>
+    </div>
+    <div class="timeline-card fade-rgt">
+      <div class="timeline-heading">A Day in the Life</div>
+      <div class="tl-item">
+        <span class="tl-time">8:30 AM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">I arrive at your home and greet your dog by name. They know me — the excitement starts here.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:45 AM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">Comfortable travel in secure, well-ventilated transport with fresh water available throughout.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">9:15 AM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">We arrive — beach, woodland, or field. A supervised adventure with a small, compatible group begins.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">10:00 AM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">Play, sniff walks, enrichment games. Mentally stimulating as well as physically rewarding.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">11:00 AM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">Photos and updates sent your way. Your dog winds down with rest and quiet companionship.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00 PM</span>
+        <div class="tl-dot"></div>
+        <p class="tl-text">Home. Happy. Exercised. Content. You'll hear all about it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE
+============================================================ -->
+<section class="section why" id="why">
+  <div class="why-grid">
+    <div class="fade-lft">
+      <div class="section-label">The Patrol Paws Difference</div>
+      <h2 class="section-title">Why Choose <em>Patrol Paws?</em></h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Former Police Officer</p>
+            <p class="why-p">Discipline, reliability, and an innate sense of responsibility. You can trust your dog is in the safest possible hands.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Pet First Aid Trained</p>
+            <p class="why-p">Qualified to provide immediate care in an emergency. Safety is never an afterthought — it's the foundation of everything I do.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Animal Behaviour Background</p>
+            <p class="why-p">University-studied animal behaviour combined with years of real-world experience handling all breeds, sizes, and temperaments.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Positive Reinforcement Focused</p>
+            <p class="why-p">Building confidence, good habits, and strong bonds — every interaction is kind, patient, and purposeful.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Small Groups, Individual Attention</p>
+            <p class="why-p">No overcrowded packs. Every dog is matched carefully and receives genuine one-to-one care throughout.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <p class="why-h">Fully Insured & DBS Checked</p>
+            <p class="why-p">Complete peace of mind. Professional to the absolute highest standard.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-panel fade-rgt">
+      <div class="why-panel-title">The Patrol Paws Promise</div>
+      <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:1.5rem;">Every dog in our care receives:</p>
+      <ul class="promise-list">
+        <li><span>🐾</span> Individual attention, every single time</li>
+        <li><span>🐾</span> Positive reinforcement — always kind, never forceful</li>
+        <li><span>🐾</span> Safe, clean transport and equipment</li>
+        <li><span>🐾</span> Fresh water on every walk</li>
+        <li><span>🐾</span> Photo updates so you're never out of the loop</li>
+        <li><span>🐾</span> Careful matching within any group</li>
+        <li><span>🐾</span> Medication administration where needed</li>
+        <li><span>🐾</span> Care as if they were my own — always</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+============================================================ -->
+<section class="section pricing" id="pricing">
+  <div class="pricing-head">
+    <div class="section-label">Transparent Pricing</div>
+    <h2 class="section-title">Simple, <em>Clear Prices</em></h2>
+    <p class="section-body">No hidden extras. No surprises. Just honest, professional service at fair prices.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card fade-up">
+      <span class="price-emoji">🚶</span>
+      <div class="price-name">Group Walk</div>
+      <div class="price-val">£15</div>
+      <div class="price-note">per session</div>
+      <ul class="price-feats">
+        <li>Small, compatible groups</li>
+        <li>Up to 60 minutes</li>
+        <li>Photo updates included</li>
+        <li>Collection &amp; drop-off</li>
+      </ul>
+    </div>
+    <div class="price-card fade-up">
+      <span class="price-emoji">🐕</span>
+      <div class="price-name">Solo Walk</div>
+      <div class="price-val">£15</div>
+      <div class="price-note">per session</div>
+      <ul class="price-feats">
+        <li>One-to-one attention</li>
+        <li>Up to 60 minutes</li>
+        <li>Ideal for reactive &amp; seniors</li>
+        <li>Flexible scheduling</li>
+      </ul>
+    </div>
+    <div class="price-card featured fade-up">
+      <span class="price-emoji">🏕️</span>
+      <div class="price-name">Adventure Club</div>
+      <div class="price-val">£25</div>
+      <div class="price-note">per dog · half day</div>
+      <ul class="price-feats">
+        <li>Collection &amp; drop-off</li>
+        <li>Beach, woodland, fields</li>
+        <li>Enrichment &amp; play</li>
+        <li>Full photo diary</li>
+      </ul>
+    </div>
+    <div class="price-card fade-up">
+      <span class="price-emoji">🐶</span>
+      <div class="price-name">Puppy Visit</div>
+      <div class="price-val">£15</div>
+      <div class="price-note">per visit</div>
+      <ul class="price-feats">
+        <li>30-minute home visit</li>
+        <li>Toilet break &amp; play</li>
+        <li>Feeding if required</li>
+        <li>Photo updates</li>
+      </ul>
+    </div>
+    <div class="price-card fade-up">
+      <span class="price-emoji">🏠</span>
+      <div class="price-name">Pet Visit</div>
+      <div class="price-val">£15</div>
+      <div class="price-note">per visit</div>
+      <ul class="price-feats">
+        <li>30-minute home visit</li>
+        <li>Feeding &amp; companionship</li>
+        <li>Medication if needed</li>
+        <li>Photo updates</li>
+      </ul>
+    </div>
+    <div class="price-card fade-up">
+      <span class="price-emoji">🛏️</span>
+      <div class="price-name">House Sitting</div>
+      <div class="price-val" style="font-size:1.8rem;">POA</div>
+      <div class="price-note">tailored to your needs</div>
+      <ul class="price-feats">
+        <li>Live-in pet care</li>
+        <li>Routine maintained</li>
+        <li>Daily exercise included</li>
+        <li>Full peace of mind</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pricing-note">
+    Discounts available for multiple bookings. 10% off all services for emergency services personnel.
+  </p>
+</section>
+
+<!-- ============================================================
+     EMERGENCY SERVICES
+============================================================ -->
+<section class="section emergency" id="emergency">
+  <div class="emergency-grid">
+    <div class="fade-lft">
+      <div class="section-label">Supporting Our Community</div>
+      <h2 class="section-title">Thank You For <em>Serving</em></h2>
+      <div class="disc-badge">10% OFF</div>
+      <p class="emergency-body">
+        As a former police officer, I understand the dedication and sacrifice it takes to serve our community. As a small thank you, Patrol Paws proudly offers 10% off all services for Police, Ambulance, and Fire Service personnel.
+      </p>
+      <div class="services-row">
+        <div class="emer-badge">
+          <div class="emer-icon">👮</div>
+          <div class="emer-label">Police</div>
+        </div>
+        <div class="emer-badge">
+          <div class="emer-icon">🚑</div>
+          <div class="emer-label">Ambulance</div>
+        </div>
+        <div class="emer-badge">
+          <div class="emer-icon">🚒</div>
+          <div class="emer-label">Fire Service</div>
+        </div>
+      </div>
+    </div>
+    <div class="emergency-image fade-rgt">
+      <img src="images/offer.jpg" alt="Emergency Services 10% Discount — Patrol Paws" />
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AREAS
+============================================================ -->
+<section class="section areas" id="areas">
+  <div class="areas-grid">
+    <div class="fade-lft">
+      <div class="section-label">Where We Walk</div>
+      <h2 class="section-title">Covering <em>Norwich</em> & Beyond</h2>
+      <p class="section-body">
+        Based in Norwich, Patrol Paws serves a growing range of areas across the city and surrounding villages — the same trusted, professional care wherever you are.
+      </p>
+      <div class="area-tags">
+        <span class="area-tag">📍 Thorpe St Andrew</span>
+        <span class="area-tag">📍 Sprowston</span>
+        <span class="area-tag">📍 Old Catton</span>
+        <span class="area-tag">📍 Blofield</span>
+        <span class="area-tag">📍 Brundall</span>
+        <span class="area-tag">📍 Norwich City</span>
+      </div>
+      <p class="areas-note">
+        Not sure if we cover your area? Get in touch — we're always looking to extend our reach for the right dogs and owners.
+      </p>
+    </div>
+    <div class="areas-map-placeholder fade-rgt">
+      <p>Experienced. Professional. Caring.</p>
+      <ul class="promise-list" style="color: var(--text-soft);">
+        <li style="color:var(--text-soft);"><span>✅</span> Fully insured &amp; DBS checked</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Pet First Aid trained</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Former police officer</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Animal behaviour background</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Positive reinforcement focused</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Local, friendly &amp; reliable</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Reliable. Calm. Compassionate.</li>
+      </ul>
+      <p style="font-family:var(--ff-script); font-size:1.2rem; color:var(--sage); text-align:center; margin-top:1.75rem;">
+        "Let's walk together!" 🐾
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section class="section faq" id="faq">
+  <div style="text-align:center;">
+    <div class="section-label" style="justify-content:center;">Got Questions?</div>
+    <h2 class="section-title" style="max-width:none;">Frequently Asked <em>Questions</em></h2>
+  </div>
+  <div class="faq-inner">
+
+    <div class="faq-item">
+      <button class="faq-q">Do you collect dogs from my home?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Yes! For all walks, puppy visits, and Adventure Club, I collect and drop off your dog from your home address. There's no need for you to travel anywhere.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Are you fully insured?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Absolutely. Patrol Paws holds full public liability insurance for all pet care services. You and your dog are fully protected.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Are you DBS checked?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Yes. As a former police officer I hold an enhanced DBS check. You can feel completely confident welcoming me into your home.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Do I meet you before we start?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Always. A free meet & greet is required before any bookings begin. It's a chance for you, your dog, and I to get to know each other and make sure we're the right fit — no obligation, no pressure.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">What if my dog has poor recall?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>No problem at all. I always assess recall before allowing any off-lead activity and never push a dog beyond their safe limit. Dogs with poor recall walk on a long line until confidence and safety are established at their pace.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Can you walk reactive dogs?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Yes. I have experience with reactive dogs and use positive, force-free techniques to help build confidence over time. I'll always be honest with you about what's realistic for your dog at each stage.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">What happens in bad weather?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>We walk in all weathers — most dogs love it! I carry appropriate gear and adjust routes to conditions. In the case of extreme or dangerous weather (lightning, severe storms), I'll contact you directly to discuss your options.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">How many dogs walk together?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Small groups only. I never take out overcrowded packs. Every group walk dog has been assessed for compatibility beforehand, and I maintain a low dog-to-walker ratio at all times.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Can puppies join walks or Adventure Club?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Puppies start with dedicated puppy visits and, once vaccinated and old enough, can graduate to walks. Adventure Club is available to dogs that are physically and behaviourally ready — we assess this together at the meet & greet.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">What is the cancellation policy?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>I ask for at least 24 hours notice for cancellations where possible. For Adventure Club, 48 hours is preferred due to planning and transport logistics. Life happens — I'm always happy to work with you.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="section contact" id="contact">
+  <div class="contact-grid">
+    <div class="fade-lft">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Book a Free <em>Meet &amp; Greet</em></h2>
+      <p class="contact-body">
+        Every new client starts with a free meet & greet — no obligation, no pressure. It's a chance for you, your dog, and I to get to know each other before any commitment is made.
+      </p>
+      <ul class="contact-details">
+        <li class="contact-detail">
+          <div class="cd-icon">📧</div>
+          <span>hello@patrolpawsnorwich.co.uk</span>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon">💬</div>
+          <span>Available on WhatsApp — just ask for the number</span>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon">📸</div>
+          <span>@patrolpawsnorwich on Instagram &amp; Facebook</span>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon">📍</div>
+          <span>Norwich, Norfolk &amp; surrounding areas</span>
+        </li>
+      </ul>
+    </div>
+    <div class="fade-rgt">
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label>Dog's Name</label>
+            <input type="text" placeholder="Buddy" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="07xxx xxx xxx" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Interested In</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Group Walk</option>
+            <option>Solo Walk</option>
+            <option>Adventure Club</option>
+            <option>Puppy Visit</option>
+            <option>Pet Visit</option>
+            <option>House Sitting / Holiday Care</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me about your dog</label>
+          <textarea placeholder="Breed, age, any special needs, what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">Send &amp; Book a Chat →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div>
+    <div class="foot-logo">PATROL 🐾 PAWS</div>
+    <div class="foot-tag">Trusted care. Every time.</div>
+  </div>
+  <ul class="foot-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#adventure">Adventure Club</a></li>
+    <li><a href="#pricing">Prices</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="foot-copy">© 2025 Patrol Paws · Norwich, Norfolk · All rights reserved</div>
+</footer>
+
+<script>
+  /* ============================================================
+     LENIS SMOOTH SCROLL
+  ============================================================ */
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+  (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
+
+  /* ============================================================
+     GSAP SCROLL ANIMATIONS
+  ============================================================ */
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.fade-up').forEach(el => {
+    gsap.fromTo(el, { opacity: 0, y: 50 }, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.fade-lft').forEach(el => {
+    gsap.fromTo(el, { opacity: 0, x: -50 }, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.fade-rgt').forEach(el => {
+    gsap.fromTo(el, { opacity: 0, x: 50 }, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+
+  /* ============================================================
+     NAV — scroll state + smooth anchors + hamburger
+  ============================================================ */
+  const nav = document.getElementById('nav');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      navLinks.classList.remove('open');
+      lenis.scrollTo(target, { offset: -70, duration: 1.4 });
+    });
+  });
+
+  /* ============================================================
+     FAQ ACCORDION
+  ============================================================ */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const ans  = item.querySelector('.faq-a');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = '0';
+      });
+      if (!open) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ============================================================
+     CONTACT FORM SUBMIT
+  ============================================================ */
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ Sent! I\'ll be in touch very soon.';
+    btn.style.background = 'rgba(196,217,190,0.9)';
+    btn.disabled = true;
+  });
+</script>
+
+</body>
+</html>
