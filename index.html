@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patrol Paws — Trusted Dog Walking & Pet Care, Norwich</title>
-  <meta name="description" content="Professional dog walking, adventure days, puppy visits and pet care across Norwich. Former police officer, fully insured, DBS checked, pet first aid trained.">
+  <meta name="description" content="Professional dog walking, adventure days, puppy visits and pet care across Norwich. Former police officer, fully insured, DBS checked, advanced pet first aid trained.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,17 +132,6 @@
       font-size: clamp(0.9rem, 1.3vw, 1.05rem);
       line-height: 1.85; color: var(--text-soft);
       max-width: 460px; margin-bottom: 2rem;
-    }
-    .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
-    }
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.38rem 0.9rem;
-      background: var(--forest); color: var(--sage-pale);
-      border-radius: 100px;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
@@ -387,45 +376,6 @@
     .promise-list li span { font-size: 0.9rem; margin-top: 2px; }
 
     /* ============================================================
-       PRICING
-    ============================================================ */
-    .pricing { background: var(--cream); }
-    .pricing-head { margin-bottom: 3.5rem; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .price-card {
-      background: var(--white); border: 1px solid var(--warm-sand);
-      border-radius: 18px; padding: 2rem 1.75rem; text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .price-card:not(.featured):hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(46,74,48,0.1); }
-    .price-card.featured {
-      background: var(--forest); border-color: var(--forest);
-      transform: scale(1.04);
-      box-shadow: 0 25px 65px rgba(46,74,48,0.25);
-    }
-    .price-emoji { font-size: 1.8rem; margin-bottom: 0.85rem; display: block; }
-    .price-name {
-      font-family: var(--ff-display); font-size: 1.25rem;
-      color: var(--forest); margin-bottom: 0.6rem;
-    }
-    .featured .price-name { color: var(--sage-pale); }
-    .price-val {
-      font-family: var(--ff-display); font-size: 2.7rem;
-      line-height: 1; color: var(--forest); margin-bottom: 0.2rem;
-    }
-    .featured .price-val { color: var(--white); }
-    .price-note { font-size: 0.78rem; color: var(--text-soft); margin-bottom: 1.25rem; }
-    .featured .price-note { color: rgba(255,255,255,0.55); }
-    .price-feats { list-style: none; font-size: 0.84rem; line-height: 2.1; color: var(--text-soft); text-align: left; }
-    .featured .price-feats { color: rgba(255,255,255,0.78); }
-    .price-feats li::before { content: '✓  '; color: var(--sage); font-weight: 700; }
-    .featured .price-feats li::before { color: var(--sage-pale); }
-    .pricing-note {
-      text-align: center; margin-top: 2rem;
-      font-size: 0.85rem; color: var(--text-soft);
-    }
-
-    /* ============================================================
        EMERGENCY SERVICES
     ============================================================ */
     .emergency {
@@ -433,10 +383,9 @@
       color: var(--white);
     }
     .emergency-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+      max-width: 720px; margin: 0 auto; text-align: center;
     }
-    .emergency .section-label { color: var(--sage-pale); }
+    .emergency .section-label { color: var(--sage-pale); justify-content: center; }
     .emergency .section-label::after { background: var(--sage-pale); }
     .emergency .section-title { color: var(--white); }
     .emergency .section-title em { color: var(--sage-pale); }
@@ -465,8 +414,7 @@
       letter-spacing: 0.15em; text-transform: uppercase;
       color: rgba(255,255,255,0.65);
     }
-    .emergency-image { border-radius: 20px; overflow: hidden; }
-    .emergency-image img { width: 100%; height: auto; }
+    .services-row { justify-content: center; }
 
     /* ============================================================
        AREAS
@@ -626,8 +574,6 @@
         grid-template-columns: 1fr; gap: 3rem;
       }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-      .price-card.featured { transform: none; }
       .why-panel { position: static; }
       .nav-links { display: none; flex-direction: column; align-items: flex-start; gap: 0; }
       .nav-links.open {
@@ -655,7 +601,7 @@
 
     @media (max-width: 600px) {
       .section { padding: 4rem 6%; }
-      .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .trust-strip { gap: 0.75rem 1.5rem; }
     }
@@ -673,7 +619,6 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#adventure">Adventure Club</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#pricing">Prices</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Book a Meet & Greet</a></li>
   </ul>
@@ -697,12 +642,6 @@
     <p class="hero-sub">
       Professional dog walking, adventure days, puppy visits and pet care across Norwich and surrounding areas.
     </p>
-    <div class="hero-badges">
-      <span class="badge">👮 Former Police Officer</span>
-      <span class="badge">🚑 Pet First Aid</span>
-      <span class="badge">✓ Fully Insured</span>
-      <span class="badge">🔒 DBS Checked</span>
-    </div>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Book a Free Meet &amp; Greet</a>
       <a href="#services" class="btn-outline">View Our Services</a>
@@ -721,7 +660,7 @@
      TRUST STRIP
 ============================================================ -->
 <div class="trust-strip">
-  <div class="trust-item"><div class="trust-icon">🚑</div>Pet First Aid Trained</div>
+  <div class="trust-item"><div class="trust-icon">🚑</div>Advanced Pet First Aid</div>
   <div class="trust-item"><div class="trust-icon">📋</div>Fully Insured</div>
   <div class="trust-item"><div class="trust-icon">🔒</div>DBS Checked</div>
   <div class="trust-item"><div class="trust-icon">👮</div>Former Police Officer</div>
@@ -735,7 +674,7 @@
 <section class="section about" id="about">
   <div class="about-grid">
     <div class="about-image-wrap fade-lft">
-      <img src="images/leaflet.jpg" alt="Patrol Paws — Dog Walking & Pet Care with a Personal Touch" />
+      <img src="images/logo.jpg" alt="Renata & Bea — Patrol Paws" style="border-radius:50%;" />
     </div>
     <div class="fade-rgt">
       <div class="section-label">About Renata</div>
@@ -882,7 +821,7 @@
         <li class="why-item">
           <div class="why-check">✓</div>
           <div>
-            <p class="why-h">Pet First Aid Trained</p>
+            <p class="why-h">Advanced Pet First Aid Trained</p>
             <p class="why-p">Qualified to provide immediate care in an emergency. Safety is never an afterthought — it's the foundation of everything I do.</p>
           </div>
         </li>
@@ -934,122 +873,29 @@
 </section>
 
 <!-- ============================================================
-     PRICING
-============================================================ -->
-<section class="section pricing" id="pricing">
-  <div class="pricing-head">
-    <div class="section-label">Transparent Pricing</div>
-    <h2 class="section-title">Simple, <em>Clear Prices</em></h2>
-    <p class="section-body">No hidden extras. No surprises. Just honest, professional service at fair prices.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card fade-up">
-      <span class="price-emoji">🚶</span>
-      <div class="price-name">Group Walk</div>
-      <div class="price-val">£15</div>
-      <div class="price-note">per session</div>
-      <ul class="price-feats">
-        <li>Small, compatible groups</li>
-        <li>Up to 60 minutes</li>
-        <li>Photo updates included</li>
-        <li>Collection &amp; drop-off</li>
-      </ul>
-    </div>
-    <div class="price-card fade-up">
-      <span class="price-emoji">🐕</span>
-      <div class="price-name">Solo Walk</div>
-      <div class="price-val">£15</div>
-      <div class="price-note">per session</div>
-      <ul class="price-feats">
-        <li>One-to-one attention</li>
-        <li>Up to 60 minutes</li>
-        <li>Ideal for reactive &amp; seniors</li>
-        <li>Flexible scheduling</li>
-      </ul>
-    </div>
-    <div class="price-card featured fade-up">
-      <span class="price-emoji">🏕️</span>
-      <div class="price-name">Adventure Club</div>
-      <div class="price-val">£25</div>
-      <div class="price-note">per dog · half day</div>
-      <ul class="price-feats">
-        <li>Collection &amp; drop-off</li>
-        <li>Beach, woodland, fields</li>
-        <li>Enrichment &amp; play</li>
-        <li>Full photo diary</li>
-      </ul>
-    </div>
-    <div class="price-card fade-up">
-      <span class="price-emoji">🐶</span>
-      <div class="price-name">Puppy Visit</div>
-      <div class="price-val">£15</div>
-      <div class="price-note">per visit</div>
-      <ul class="price-feats">
-        <li>30-minute home visit</li>
-        <li>Toilet break &amp; play</li>
-        <li>Feeding if required</li>
-        <li>Photo updates</li>
-      </ul>
-    </div>
-    <div class="price-card fade-up">
-      <span class="price-emoji">🏠</span>
-      <div class="price-name">Pet Visit</div>
-      <div class="price-val">£15</div>
-      <div class="price-note">per visit</div>
-      <ul class="price-feats">
-        <li>30-minute home visit</li>
-        <li>Feeding &amp; companionship</li>
-        <li>Medication if needed</li>
-        <li>Photo updates</li>
-      </ul>
-    </div>
-    <div class="price-card fade-up">
-      <span class="price-emoji">🛏️</span>
-      <div class="price-name">House Sitting</div>
-      <div class="price-val" style="font-size:1.8rem;">POA</div>
-      <div class="price-note">tailored to your needs</div>
-      <ul class="price-feats">
-        <li>Live-in pet care</li>
-        <li>Routine maintained</li>
-        <li>Daily exercise included</li>
-        <li>Full peace of mind</li>
-      </ul>
-    </div>
-  </div>
-  <p class="pricing-note">
-    Discounts available for multiple bookings. 10% off all services for emergency services personnel.
-  </p>
-</section>
-
-<!-- ============================================================
      EMERGENCY SERVICES
 ============================================================ -->
 <section class="section emergency" id="emergency">
-  <div class="emergency-grid">
-    <div class="fade-lft">
-      <div class="section-label">Supporting Our Community</div>
-      <h2 class="section-title">Thank You For <em>Serving</em></h2>
-      <div class="disc-badge">10% OFF</div>
-      <p class="emergency-body">
-        As a former police officer, I understand the dedication and sacrifice it takes to serve our community. As a small thank you, Patrol Paws proudly offers 10% off all services for Police, Ambulance, and Fire Service personnel.
-      </p>
-      <div class="services-row">
-        <div class="emer-badge">
-          <div class="emer-icon">👮</div>
-          <div class="emer-label">Police</div>
-        </div>
-        <div class="emer-badge">
-          <div class="emer-icon">🚑</div>
-          <div class="emer-label">Ambulance</div>
-        </div>
-        <div class="emer-badge">
-          <div class="emer-icon">🚒</div>
-          <div class="emer-label">Fire Service</div>
-        </div>
+  <div class="emergency-grid fade-up">
+    <div class="section-label">Supporting Our Community</div>
+    <h2 class="section-title">Thank You For <em>Serving</em></h2>
+    <div class="disc-badge">10% OFF</div>
+    <p class="emergency-body">
+      As a former police officer, I understand the dedication and sacrifice it takes to serve our community. As a small thank you, Patrol Paws proudly offers 10% off all services for Police, Ambulance, and Fire Service personnel.
+    </p>
+    <div class="services-row">
+      <div class="emer-badge">
+        <div class="emer-icon">👮</div>
+        <div class="emer-label">Police</div>
       </div>
-    </div>
-    <div class="emergency-image fade-rgt">
-      <img src="images/offer.jpg" alt="Emergency Services 10% Discount — Patrol Paws" />
+      <div class="emer-badge">
+        <div class="emer-icon">🚑</div>
+        <div class="emer-label">Ambulance</div>
+      </div>
+      <div class="emer-badge">
+        <div class="emer-icon">🚒</div>
+        <div class="emer-label">Fire Service</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1081,7 +927,7 @@
       <p>Experienced. Professional. Caring.</p>
       <ul class="promise-list" style="color: var(--text-soft);">
         <li style="color:var(--text-soft);"><span>✅</span> Fully insured &amp; DBS checked</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Pet First Aid trained</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Advanced Pet First Aid trained</li>
         <li style="color:var(--text-soft);"><span>✅</span> Former police officer</li>
         <li style="color:var(--text-soft);"><span>✅</span> Animal behaviour background</li>
         <li style="color:var(--text-soft);"><span>✅</span> Positive reinforcement focused</li>
@@ -1244,12 +1090,11 @@
   <ul class="foot-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#adventure">Adventure Club</a></li>
-    <li><a href="#pricing">Prices</a></li>
     <li><a href="#areas">Areas</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="foot-copy">© 2025 Patrol Paws · Norwich, Norfolk · All rights reserved</div>
+  <div class="foot-copy">© 2026 Patrol Paws · Norwich, Norfolk · All rights reserved</div>
 </footer>
 
 <script>
