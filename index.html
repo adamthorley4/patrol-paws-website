@@ -1185,8 +1185,12 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
+  let currentPage = 'home';
+
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+    if (currentPage === 'home') {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
   });
 
   navToggle.addEventListener('click', () => {
@@ -1206,6 +1210,7 @@
     document.querySelectorAll('.nav-links [data-page]').forEach(a => {
       a.classList.toggle('nav-link--active', a.dataset.page === pageId);
     });
+    currentPage = pageId;
     // Non-home pages always show nav background (no hero to overlay)
     if (pageId === 'home') {
       nav.classList.toggle('scrolled', window.scrollY > 40);
