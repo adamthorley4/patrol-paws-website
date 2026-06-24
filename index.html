@@ -393,9 +393,9 @@
       display: inline-block;
       background: var(--sage-pale); color: var(--forest);
       font-family: var(--ff-display);
-      font-size: clamp(3.5rem, 7vw, 5.5rem);
-      line-height: 1; padding: 1rem 2rem;
-      border-radius: 16px; margin: 1.25rem 0;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1; padding: 0.5rem 1.25rem;
+      border-radius: 10px; margin: 0.75rem 0;
     }
     .emergency-body { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.72); margin-bottom: 2rem; }
     .services-row { display: flex; gap: 2rem; flex-wrap: wrap; }
@@ -605,6 +605,16 @@
       .form-row { grid-template-columns: 1fr; }
       .trust-strip { gap: 0.75rem 1.5rem; }
     }
+
+    /* ── PAGE SWITCHING ── */
+    .page { display: none; }
+    .page.page--active { display: block; animation: pageFadeIn 0.35s ease; }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    [data-page] { cursor: pointer; }
+    .nav-link--active { color: var(--forest) !important; font-weight: 600; }
   </style>
 </head>
 
@@ -614,18 +624,22 @@
      NAVIGATION
 ============================================================ -->
 <nav class="nav" id="nav">
-  <div class="nav-logo">PATROL <span class="paw">🐾</span> PAWS</div>
+  <div class="nav-logo" data-page="home" style="cursor:pointer">PATROL <span class="paw">🐾</span> PAWS</div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#adventure">Adventure Club</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Book a Meet & Greet</a></li>
+    <li><a href="#" data-page="services">Services</a></li>
+    <li><a href="#" data-page="adventure">Adventure Club</a></li>
+    <li><a href="#" data-page="faq">FAQ</a></li>
+    <li><a href="#" data-page="contact" class="nav-cta">Book a Meet &amp; Greet</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- ============================================================
+     PAGE: HOME (hero + trust strip + about)
+============================================================ -->
+<div class="page page--active" id="page-home">
 
 <!-- ============================================================
      HERO
@@ -643,8 +657,8 @@
       Professional dog walking, adventure days, puppy visits and pet care across Norwich and surrounding areas.
     </p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Book a Free Meet &amp; Greet</a>
-      <a href="#services" class="btn-outline">View Our Services</a>
+      <a href="#" data-page="contact" class="btn-primary">Book a Free Meet &amp; Greet</a>
+      <a href="#" data-page="services" class="btn-outline">View Our Services</a>
     </div>
   </div>
   <div class="hero-image fade-rgt">
@@ -689,10 +703,17 @@
       <p class="about-text" style="margin-top:1rem;">
         I've also spent time helping stray dogs during travels abroad, which cemented something I already knew: every dog deserves exercise, enrichment, patience, and genuine love — not just a quick lap around the block.
       </p>
-      <a href="#contact" class="btn-primary" style="margin-top:2rem;">Book a Chat with Renata</a>
+      <a href="#" data-page="contact" class="btn-primary" style="margin-top:2rem;">Book a Chat with Renata</a>
     </div>
   </div>
 </section>
+
+</div><!-- /page-home -->
+
+<!-- ============================================================
+     PAGE: SERVICES
+============================================================ -->
+<div class="page" id="page-services">
 
 <!-- ============================================================
      SERVICES
@@ -743,6 +764,82 @@
 </section>
 
 <!-- ============================================================
+     EMERGENCY SERVICES
+============================================================ -->
+<section class="section emergency" id="emergency">
+  <div class="emergency-grid fade-up">
+    <div class="section-label">Supporting Our Community</div>
+    <h2 class="section-title">Thank You For <em>Serving</em></h2>
+    <div class="disc-badge">10% OFF</div>
+    <p class="emergency-body">
+      As a former police officer, I understand the dedication and sacrifice it takes to serve our community. As a small thank you, Patrol Paws proudly offers 10% off all services for Police, Ambulance, and Fire Service personnel.
+    </p>
+    <div class="services-row">
+      <div class="emer-badge">
+        <div class="emer-icon">👮</div>
+        <div class="emer-label">Police</div>
+      </div>
+      <div class="emer-badge">
+        <div class="emer-icon">🚑</div>
+        <div class="emer-label">Ambulance</div>
+      </div>
+      <div class="emer-badge">
+        <div class="emer-icon">🚒</div>
+        <div class="emer-label">Fire Service</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AREAS
+============================================================ -->
+<section class="section areas" id="areas">
+  <div class="areas-grid">
+    <div class="fade-lft">
+      <div class="section-label">Where We Walk</div>
+      <h2 class="section-title">Covering <em>Norwich</em> & Beyond</h2>
+      <p class="section-body">
+        Based in Norwich, Patrol Paws serves a growing range of areas across the city and surrounding villages — the same trusted, professional care wherever you are.
+      </p>
+      <div class="area-tags">
+        <span class="area-tag">📍 Thorpe St Andrew</span>
+        <span class="area-tag">📍 Sprowston</span>
+        <span class="area-tag">📍 Old Catton</span>
+        <span class="area-tag">📍 Blofield</span>
+        <span class="area-tag">📍 Brundall</span>
+        <span class="area-tag">📍 Norwich City</span>
+      </div>
+      <p class="areas-note">
+        Not sure if we cover your area? Get in touch — we're always looking to extend our reach for the right dogs and owners.
+      </p>
+    </div>
+    <div class="areas-map-placeholder fade-rgt">
+      <p>Experienced. Professional. Caring.</p>
+      <ul class="promise-list" style="color: var(--text-soft);">
+        <li style="color:var(--text-soft);"><span>✅</span> Fully insured &amp; DBS checked</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Advanced Pet First Aid trained</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Former police officer</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Animal behaviour background</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Positive reinforcement focused</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Local, friendly &amp; reliable</li>
+        <li style="color:var(--text-soft);"><span>✅</span> Reliable. Calm. Compassionate.</li>
+      </ul>
+      <p style="font-family:var(--ff-script); font-size:1.2rem; color:var(--sage); text-align:center; margin-top:1.75rem;">
+        "Let's walk together!" 🐾
+      </p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-services -->
+
+<!-- ============================================================
+     PAGE: ADVENTURE CLUB (adventure + why choose)
+============================================================ -->
+<div class="page" id="page-adventure">
+
+<!-- ============================================================
      ADVENTURE CLUB
 ============================================================ -->
 <section class="section adventure" id="adventure">
@@ -764,7 +861,7 @@
         <li>Recall practice (where safe)</li>
         <li>Photo diary sent to you</li>
       </ul>
-      <a href="#contact" class="adventure-cta">Book an Adventure Day</a>
+      <a href="#" data-page="contact" class="adventure-cta">Book an Adventure Day</a>
     </div>
     <div class="timeline-card fade-rgt">
       <div class="timeline-heading">A Day in the Life</div>
@@ -872,74 +969,12 @@
   </div>
 </section>
 
-<!-- ============================================================
-     EMERGENCY SERVICES
-============================================================ -->
-<section class="section emergency" id="emergency">
-  <div class="emergency-grid fade-up">
-    <div class="section-label">Supporting Our Community</div>
-    <h2 class="section-title">Thank You For <em>Serving</em></h2>
-    <div class="disc-badge">10% OFF</div>
-    <p class="emergency-body">
-      As a former police officer, I understand the dedication and sacrifice it takes to serve our community. As a small thank you, Patrol Paws proudly offers 10% off all services for Police, Ambulance, and Fire Service personnel.
-    </p>
-    <div class="services-row">
-      <div class="emer-badge">
-        <div class="emer-icon">👮</div>
-        <div class="emer-label">Police</div>
-      </div>
-      <div class="emer-badge">
-        <div class="emer-icon">🚑</div>
-        <div class="emer-label">Ambulance</div>
-      </div>
-      <div class="emer-badge">
-        <div class="emer-icon">🚒</div>
-        <div class="emer-label">Fire Service</div>
-      </div>
-    </div>
-  </div>
-</section>
+</div><!-- /page-adventure -->
 
 <!-- ============================================================
-     AREAS
+     PAGE: FAQ
 ============================================================ -->
-<section class="section areas" id="areas">
-  <div class="areas-grid">
-    <div class="fade-lft">
-      <div class="section-label">Where We Walk</div>
-      <h2 class="section-title">Covering <em>Norwich</em> & Beyond</h2>
-      <p class="section-body">
-        Based in Norwich, Patrol Paws serves a growing range of areas across the city and surrounding villages — the same trusted, professional care wherever you are.
-      </p>
-      <div class="area-tags">
-        <span class="area-tag">📍 Thorpe St Andrew</span>
-        <span class="area-tag">📍 Sprowston</span>
-        <span class="area-tag">📍 Old Catton</span>
-        <span class="area-tag">📍 Blofield</span>
-        <span class="area-tag">📍 Brundall</span>
-        <span class="area-tag">📍 Norwich City</span>
-      </div>
-      <p class="areas-note">
-        Not sure if we cover your area? Get in touch — we're always looking to extend our reach for the right dogs and owners.
-      </p>
-    </div>
-    <div class="areas-map-placeholder fade-rgt">
-      <p>Experienced. Professional. Caring.</p>
-      <ul class="promise-list" style="color: var(--text-soft);">
-        <li style="color:var(--text-soft);"><span>✅</span> Fully insured &amp; DBS checked</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Advanced Pet First Aid trained</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Former police officer</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Animal behaviour background</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Positive reinforcement focused</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Local, friendly &amp; reliable</li>
-        <li style="color:var(--text-soft);"><span>✅</span> Reliable. Calm. Compassionate.</li>
-      </ul>
-      <p style="font-family:var(--ff-script); font-size:1.2rem; color:var(--sage); text-align:center; margin-top:1.75rem;">
-        "Let's walk together!" 🐾
-      </p>
-    </div>
-  </div>
-</section>
+<div class="page" id="page-faq">
 
 <!-- ============================================================
      FAQ
@@ -1004,6 +1039,13 @@
   </div>
 </section>
 
+</div><!-- /page-faq -->
+
+<!-- ============================================================
+     PAGE: CONTACT
+============================================================ -->
+<div class="page" id="page-contact">
+
 <!-- ============================================================
      CONTACT
 ============================================================ -->
@@ -1018,7 +1060,7 @@
       <ul class="contact-details">
         <li class="contact-detail">
           <div class="cd-icon">📧</div>
-          <span>hello@patrolpawsnorwich.co.uk</span>
+          <span>info@patrolpaws.co.uk</span>
         </li>
         <li class="contact-detail">
           <div class="cd-icon">💬</div>
@@ -1036,29 +1078,32 @@
     </div>
     <div class="fade-rgt">
       <form class="contact-form" id="contactForm">
+        <input type="hidden" name="access_key" value="703df327-efdf-4301-895d-5af36f11adfd" />
+        <input type="hidden" name="subject" value="New Enquiry — Patrol Paws" />
+        <input type="hidden" name="from_name" value="Patrol Paws Website" />
         <div class="form-row">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" placeholder="Jane Smith" required />
+            <input type="text" name="name" placeholder="Jane Smith" required />
           </div>
           <div class="form-group">
             <label>Dog's Name</label>
-            <input type="text" placeholder="Buddy" required />
+            <input type="text" name="dog_name" placeholder="Buddy" required />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="jane@email.com" required />
+            <input type="email" name="email" placeholder="jane@email.com" required />
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" placeholder="07xxx xxx xxx" />
+            <input type="tel" name="phone" placeholder="07xxx xxx xxx" />
           </div>
         </div>
         <div class="form-group">
           <label>Service Interested In</label>
-          <select>
+          <select name="service">
             <option value="">Select a service...</option>
             <option>Group Walk</option>
             <option>Solo Walk</option>
@@ -1071,13 +1116,16 @@
         </div>
         <div class="form-group">
           <label>Tell me about your dog</label>
-          <textarea placeholder="Breed, age, any special needs, what you're looking for..."></textarea>
+          <textarea name="message" placeholder="Breed, age, any special needs, what you're looking for..."></textarea>
         </div>
         <button type="submit" class="btn-submit" id="submitBtn">Send &amp; Book a Chat →</button>
+        <p id="formFeedback" style="display:none; margin-top:0.8rem; font-size:0.9rem; text-align:center;"></p>
       </form>
     </div>
   </div>
 </section>
+
+</div><!-- /page-contact -->
 
 <!-- ============================================================
      FOOTER
@@ -1088,11 +1136,10 @@
     <div class="foot-tag">Trusted care. Every time.</div>
   </div>
   <ul class="foot-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#adventure">Adventure Club</a></li>
-    <li><a href="#areas">Areas</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" data-page="services">Services</a></li>
+    <li><a href="#" data-page="adventure">Adventure Club</a></li>
+    <li><a href="#" data-page="faq">FAQ</a></li>
+    <li><a href="#" data-page="contact">Contact</a></li>
   </ul>
   <div class="foot-copy">© 2026 Patrol Paws · Norwich, Norfolk · All rights reserved</div>
 </footer>
@@ -1146,14 +1193,36 @@
     navLinks.classList.toggle('open');
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      navLinks.classList.remove('open');
-      lenis.scrollTo(target, { offset: -70, duration: 1.4 });
+  /* ============================================================
+     PAGE SWITCHING
+  ============================================================ */
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('page--active'));
+    const target = document.getElementById('page-' + pageId);
+    if (!target) return;
+    target.classList.add('page--active');
+    window.scrollTo(0, 0);
+    navLinks.classList.remove('open');
+    document.querySelectorAll('.nav-links [data-page]').forEach(a => {
+      a.classList.toggle('nav-link--active', a.dataset.page === pageId);
     });
+    // Non-home pages always show nav background (no hero to overlay)
+    if (pageId === 'home') {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    } else {
+      nav.classList.add('scrolled');
+      // Ensure elements in non-home pages are fully visible (GSAP from-state override)
+      target.querySelectorAll('.fade-up, .fade-lft, .fade-rgt').forEach(el => {
+        gsap.set(el, { opacity: 1, x: 0, y: 0 });
+      });
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-page]');
+    if (!el) return;
+    e.preventDefault();
+    showPage(el.dataset.page);
   });
 
   /* ============================================================
@@ -1178,12 +1247,35 @@
   /* ============================================================
      CONTACT FORM SUBMIT
   ============================================================ */
-  document.getElementById('contactForm').addEventListener('submit', e => {
+  document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
-    btn.textContent = '✓ Sent! I\'ll be in touch very soon.';
-    btn.style.background = 'rgba(196,217,190,0.9)';
+    const feedback = document.getElementById('formFeedback');
+    btn.textContent = 'Sending…';
     btn.disabled = true;
+
+    const data = Object.fromEntries(new FormData(e.target));
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      btn.textContent = '✓ Sent! I\'ll be in touch very soon.';
+      btn.style.background = 'rgba(196,217,190,0.9)';
+      feedback.style.display = 'block';
+      feedback.style.color = 'rgba(196,217,190,0.9)';
+      feedback.textContent = 'Thanks for getting in touch — Renata will reply within 24 hours.';
+      e.target.reset();
+    } else {
+      btn.textContent = 'Send & Book a Chat →';
+      btn.disabled = false;
+      feedback.style.display = 'block';
+      feedback.style.color = '#ff8a8a';
+      feedback.textContent = 'Something went wrong — please try again or email directly.';
+    }
   });
 </script>
 
