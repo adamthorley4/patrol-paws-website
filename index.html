@@ -285,17 +285,17 @@
     /* ============================================================
        ADVENTURE CLUB
     ============================================================ */
-    .adventure { background: var(--forest); }
+    .adventure { background: var(--cream); }
     .adventure-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
     }
-    .adventure .section-label { color: var(--sage-pale); }
-    .adventure .section-label::after { background: var(--sage-pale); }
-    .adventure .section-title { color: var(--white); }
-    .adventure .section-title em { color: var(--sage-pale); }
-    .adventure-body { font-size: 0.97rem; line-height: 1.9; color: rgba(255,255,255,0.72); margin-bottom: 1.5rem; }
+    .adventure .section-label { color: var(--sage); }
+    .adventure .section-label::after { background: var(--sage); }
+    .adventure .section-title { color: var(--forest); }
+    .adventure .section-title em { color: var(--sage); }
+    .adventure-body { font-size: 0.97rem; line-height: 1.9; color: var(--text-soft); margin-bottom: 1.5rem; }
     .adventure-price-badge {
-      display: inline-block; background: var(--sage-pale); color: var(--forest);
+      display: inline-block; background: var(--forest); color: var(--white);
       padding: 0.55rem 1.5rem; border-radius: 100px;
       font-size: 1rem; font-weight: 700; margin-bottom: 2rem;
     }
@@ -304,48 +304,48 @@
     }
     .adventure-list li {
       display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.88rem; color: rgba(255,255,255,0.82);
+      font-size: 0.88rem; color: var(--text-soft);
     }
     .adventure-list li::before { content: '🐾'; font-size: 0.75rem; }
     .adventure-cta {
       margin-top: 2.5rem; display: inline-block;
       padding: 0.9rem 1.9rem; border-radius: 100px;
-      border: 2px solid var(--sage-pale); color: var(--sage-pale);
+      border: 2px solid var(--forest); color: var(--forest);
       font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700;
       letter-spacing: 0.04em; transition: all 0.25s;
     }
-    .adventure-cta:hover { background: var(--sage-pale); color: var(--forest); }
+    .adventure-cta:hover { background: var(--forest); color: var(--white); }
 
     /* Timeline card */
     .timeline-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--sage-mist);
+      border: 1px solid rgba(47,76,49,0.12);
       border-radius: 18px; padding: 2.5rem;
     }
     .timeline-heading {
       font-family: var(--ff-script); font-size: 1.35rem;
-      color: var(--sage-pale); margin-bottom: 1.75rem;
+      color: var(--forest); margin-bottom: 1.75rem;
     }
     .tl-item {
       display: flex; gap: 1.25rem; align-items: flex-start;
-      padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 1.1rem 0; border-bottom: 1px solid rgba(47,76,49,0.1);
       position: relative;
     }
     .tl-item:last-child { border-bottom: none; }
     .tl-time {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
-      color: var(--sage-pale); min-width: 58px; padding-top: 3px;
+      color: var(--sage); min-width: 58px; padding-top: 3px;
     }
     .tl-dot {
       width: 10px; height: 10px; background: var(--sage);
       border-radius: 50%; flex-shrink: 0; margin-top: 6px;
     }
-    .tl-text { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.78); }
+    .tl-text { font-size: 0.88rem; line-height: 1.65; color: var(--text-soft); }
 
     /* ============================================================
        WHY CHOOSE
     ============================================================ */
-    .why { background: var(--sage-mist); }
+    .why { background: var(--cream); }
     .why-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 5.5rem; align-items: start;
     }
